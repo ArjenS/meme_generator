@@ -13,7 +13,7 @@ class IngestInterface(ABC):
 
     @classmethod
     @abstractmethod
-    def parse(cls, path: str) -> List[Cat]:
+    def parse(cls, path: str) -> List[Quote]:
         pass
 
 
