@@ -2,13 +2,13 @@ from typing import List
 import docx
 from Ingestor import IngestInterface
 
-from .Quote import Quote
+from .QuoteModel import QuoteModel
 
 class DOCXIngestor(IngestInterface):
     allowed_extensions = ['docx']
 
     @classmethod
-    def parse(cls, path) -> List[Quote]:
+    def parse(cls, path) -> List[QuoteModel]:
         if not cls.can_ingest:
             raise Exception('cannot ingest exception')
         
@@ -19,6 +19,6 @@ class DOCXIngestor(IngestInterface):
             if para.text != "":
                 print(para.text)
                 parse = para.text.split(' - ')
-                new_quote = Quote(parse[0],parse[1])
-                quotes.append(new_quote)
+                new_quote = QuoteModel(parse[0],parse[1])
+                quotes.append(new_QuoteModel)
         return quotes

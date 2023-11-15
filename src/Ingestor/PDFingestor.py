@@ -4,13 +4,13 @@ import os
 import random
 
 from .Docxingestor import IngestInterface
-from .Quote import Quote
+from .QuoteModel import QuoteModel
 
 class PDFIngestor(IngestInterface):
     allowed_extensions = ['pdf']
 
     @classmethod
-    def parse(cls, path:str) -> List[Quote]:
+    def parse(cls, path:str) -> List[QuoteModel]:
         if not cls.can_ingest(path):
             raise Exception('Can not ingest exception')
 
@@ -25,7 +25,7 @@ class PDFIngestor(IngestInterface):
             if len(line) > 0:
                 parse = line.split(' - ')
                 if len(parse) > 1:
-                    new_quote = Quote(parse[0],parse[1])
+                    new_quote = QuoteModel(parse[0],parse[1])
                     quotes.append(new_quote)
         return quotes
 

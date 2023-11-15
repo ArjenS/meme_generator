@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from .Quote import Quote
+from .QuoteModel import QuoteModel
 
 class IngestInterface(ABC):
     allowed_extensions = []
@@ -13,7 +13,7 @@ class IngestInterface(ABC):
 
     @classmethod
     @abstractmethod
-    def parse(cls, path: str) -> List[Quote]:
+    def parse(cls, path: str) -> List[QuoteModel]:
         pass
 
 
