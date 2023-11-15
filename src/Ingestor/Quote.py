@@ -6,4 +6,4 @@ class Quote():
 
     def __repr__(self):
         """Represent a quote as a body with an author"""
-        return f"{body}-{author}"
+        return f"{self.body}-{self.author}"
