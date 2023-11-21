@@ -2,16 +2,25 @@ from typing import List
 
 from .IngestInterface import IngestInterface
 from .QuoteModel import QuoteModel
-from .TXTingestor import TXTIngestor
-from .CSVingestor import CSVIngestor
-from .PDFingestor import PDFIngestor
-from .Docxingestor import DOCXIngestor
+from .TxtIngestor import TxtIngestor
+from .CsvIngestor import CsvIngestor
+from .PdfIngestor import PdfIngestor
+from .Docxingestor import DocxIngestor
+
 
 class Ingestor(IngestInterface):
-    ingestors = [TXTIngestor,CSVIngestor,PDFIngestor,DOCXIngestor]
+    """Realiziation of the IngestorInterface encapsulating helper classes for
+    txt, csv, pdf and docx"""
+
+    ingestors = [TxtIngestor, CsvIngestor, PdfIngestor, DocxIngestor]
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
+        """parse method to call the separate functions in the helper classes.
+        Argument:
+            path: Location of the file to be parsed
+        Returns: A list of QuoteModels for the permitted extensions
+        """
         for ingestor in cls.ingestors:
             if ingestor.can_ingest(path):
                 return ingestor.parse(path)
