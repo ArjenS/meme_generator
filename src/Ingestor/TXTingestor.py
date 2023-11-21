@@ -1,7 +1,8 @@
 from typing import List
+from QuoteEngine import QuoteModel
 
 from .IngestInterface import IngestInterface
-from .QuoteModel import QuoteModel
+
 
 
 class TxtIngestor(IngestInterface):

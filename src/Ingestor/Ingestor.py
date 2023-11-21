@@ -1,7 +1,7 @@
 from typing import List
+from QuoteEngine import QuoteModel
 
 from .IngestInterface import IngestInterface
-from .QuoteModel import QuoteModel
 from .TxtIngestor import TxtIngestor
 from .CsvIngestor import CsvIngestor
 from .PdfIngestor import PdfIngestor

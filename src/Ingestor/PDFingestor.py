@@ -2,9 +2,10 @@ from typing import List
 import subprocess
 import os
 import random
+from QuoteEngine import QuoteModel
 
-from .Docxingestor import IngestInterface
-from .QuoteModel import QuoteModel
+from Ingestor import IngestInterface
+
 
 
 class PdfIngestor(IngestInterface):
@@ -17,8 +18,11 @@ class PdfIngestor(IngestInterface):
         if not cls.can_ingest(path):
             raise Exception("Can not ingest exception")
 
-        tmp = f"./tmp/{random.randint(0, 1000000)}.txt"
-        call = subprocess.check_call(["pdftotext", path, tmp])
+        tmp = f"./{random.randint(0, 1000000)}.txt"
+        try:
+            call = subprocess.check_call(["pdftotext",  path, tmp])
+        except subprocess.CalledProcessError as e:
+            print(e.output)
 
         file_ref = open(tmp, "r")
         quotes = []

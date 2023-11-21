@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
+from QuoteEngine import QuoteModel
 
-from .QuoteModel import QuoteModel
 
 
 class IngestInterface(ABC):

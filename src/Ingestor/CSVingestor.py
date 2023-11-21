@@ -1,8 +1,8 @@
 from typing import List
 import pandas
+from QuoteEngine import QuoteModel
+from Ingestor import IngestInterface
 
-from .IngestInterface import IngestInterface
-from .QuoteModel import QuoteModel
 
 
 class CsvIngestor(IngestInterface):
