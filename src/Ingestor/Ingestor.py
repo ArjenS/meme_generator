@@ -1,5 +1,5 @@
 from typing import List
-from QuoteEngine import QuoteModel
+from QuoteModel import QuoteModel
 
 from .IngestInterface import IngestInterface
 from .TxtIngestor import TxtIngestor
