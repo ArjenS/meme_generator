@@ -8,7 +8,3 @@ class QuoteModel:
     def __repr__(self):
         """Represent a quote as a body with an author"""
         return f"{self.body}-{self.author}"
-    
-    # def __str__(self):
-    #     """String representation."""
-    #     return f"{self.body}-{self.author}"

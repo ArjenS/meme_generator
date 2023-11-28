@@ -1,3 +1,4 @@
+"""Helper for loading CSV's"""
 from typing import List
 import pandas
 from QuoteModel import QuoteModel

@@ -1,2 +1,2 @@
 """Initialize the MemeGenerator class."""
-from MemeEngine import MemeEngine
+from .MemeEngine import MemeEngine

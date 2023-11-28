@@ -1,3 +1,4 @@
+"""Helper for loading DOCX's"""
 from typing import List
 import docx
 from QuoteModel import QuoteModel

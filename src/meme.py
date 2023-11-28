@@ -2,8 +2,8 @@ import os
 import random
 import argparse
 from QuoteModel.QuoteModel import QuoteModel
-from Ingestor.Ingestor import Ingestor
-from MemeEngine.MemeEngine import MemeEngine
+from Ingestor import Ingestor
+from MemeEngine import MemeEngine
 
 
 def generate_meme(path=None, body=None, author=None):
