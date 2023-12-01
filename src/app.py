@@ -39,11 +39,6 @@ quotes, imgs = setup()
 @app.route("/")
 def meme_rand():
     """Generate a random meme"""
-
-    # @TODO:
-    # Use the random python standard library class to:
-    # 1. select a random image from imgs array
-    # 2. select a random quote from the quotes array
     img = random.choice(imgs)
     quote = random.choice(quotes)
     path = meme.make_meme(img, quote.body, quote.author)
@@ -59,15 +54,16 @@ def meme_form():
 @app.route("/create", methods=["POST"])
 def meme_post():
     """Create a user defined meme"""
-
+    
     # @TODO:
     # 1. Use requests to save the image from the image_url
     #    form param to a temp local file.
     # 2. Use the meme object to generate a meme using this temp
     #    file and the body and author form paramaters.
     # 3. Remove the temporary saved image.
-
-    path = None
+    img = requests.get(url)
+    quote = requests.get(quote)   
+    path = meme.make_meme(img,quote.body,quote.author)
 
     return render_template("meme.html", path=path)
 
