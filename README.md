@@ -10,4 +10,7 @@ The project consists of the following modules:
 - Ingestor: Ingests quotes from the files in './data/DogQuotes/' and returns them as a list of instances of QuoteModel
 - MemeGenerator: Take images from ./_data/photos/, resize them and add a quote as defined in QuoteMode.
 
-
+## In case of problems with pdf to text, run the following steps in a linux environment: 
+sudo apt-get update
+sudo apt-get install -y xpdf 
+pdftotext data/cats.pdf tmp/a.txt
