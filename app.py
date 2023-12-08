@@ -1,7 +1,6 @@
 import random
 import os
 import requests
-import urllib
 from flask import Flask, render_template, abort, request
 from Ingestor import Ingestor
 from MemeEngine import MemeEngine
@@ -19,7 +18,7 @@ def setup():
     quote_files = [
         "./_data/DogQuotes/DogQuotesTXT.txt",
         "./_data/DogQuotes/DogQuotesDOCX.docx",
-        #"./_data/DogQuotes/DogQuotesPDF.pdf",
+        "./_data/DogQuotes/DogQuotesPDF.pdf",
         "./_data/DogQuotes/DogQuotesCSV.csv",
     ]
     
@@ -36,7 +35,7 @@ def setup():
 
 
 quotes, imgs = setup()
-print('imgs:',imgs)
+
 
 @app.route("/")
 def meme_rand():
@@ -58,21 +57,20 @@ def meme_form():
 def meme_post():
     """Create a user defined meme"""
     
-    # @TODO:
-    # 1. Use requests to save the image from the image_url
-    #    form param to a temp local file.
-    # 2. Use the meme object to generate a meme using this temp
-    #    file and the body and author form paramaters.
-    # 3. Remove the temporary saved image.       
-    # image_url = image_url
-    
-    img_url = request.form.get("img_url")
-    img_path = os.path.join('.','tmp','image.png')  #'.\tmp\image.png'
-    urllib.request.urlretrieve(img_url,img_path)
-        
-    quote = QuoteModel(request.form.get("body"),request.form.get("author"))
-    path = meme.make_meme(filename,quote.body,quote.author)
+    img_url = request.form.get("image_url")
+    reponse =requests.get(img_url)        
+    tmp_img = f'{os.getcwd()}/tmp/{random.randint(0,1000000000)}.png'
+    with open(tmp_img,'wb') as img:
+        img.write(reponse.content)
 
+    quote = QuoteModel(request.form.get("body"),request.form.get("author"))
+   
+    
+        
+    
+    meme = MemeEngine('./static')
+    path = meme.make_meme(tmp_img,quote.body,quote.author)
+    os.remove(tmp_img)
     return render_template("meme.html", path=path)
 
 
