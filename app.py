@@ -36,13 +36,14 @@ def setup():
 
 
 quotes, imgs = setup()
-
+print('imgs:',imgs)
 
 @app.route("/")
 def meme_rand():
     """Generate a random meme"""
     img = random.choice(imgs)
     quote = random.choice(quotes)
+    meme = MemeEngine('./static')
     path = meme.make_meme(img, quote.body, quote.author)    
     return render_template("meme.html", path=path)
 

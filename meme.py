@@ -30,6 +30,7 @@ def generate_meme(path=None, body=None, author=None):
         ]
         quotes = []
         for f in quote_files:
+            print(f)            
             quotes.extend(Ingestor.parse(f))
 
         quote = random.choice(quotes)
@@ -38,7 +39,7 @@ def generate_meme(path=None, body=None, author=None):
             raise Exception("Author Required if Body is Used")
         quote = QuoteModel(body, author)
     
-    meme = MemeEngine("./tmp")
+    meme = MemeEngine("./static")
     path = meme.make_meme(img, quote.body, quote.author)
     return path
 

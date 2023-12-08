@@ -71,7 +71,7 @@ class MemeEngine():
         Return:
             None
         """
-        output_path = f"./meme.jpg"
+        output_path = os.path.join(path,'meme.jpg')
         img.save(output_path)
         return output_path
         
@@ -87,7 +87,9 @@ class MemeEngine():
             width: the width to which the image shoud be sized 
         Returns path on which the image is saved
         """
+        if self.path:
+            save_path = self.path
         image = self.load_image(path = img_path)
         image = self.resize_image(img = image, width = width)
         image = self.add_message(img = image, message = text, author = author)
-        return self.save_image(img = image,path=img_path)
+        return self.save_image(img = image,path=save_path)
