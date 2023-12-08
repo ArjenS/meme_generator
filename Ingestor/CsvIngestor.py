@@ -5,7 +5,6 @@ from QuoteModel import QuoteModel
 from Ingestor import IngestInterface
 
 
-
 class CsvIngestor(IngestInterface):
     """Helper class implementation of the IngestInterface to parse csv's"""
 
@@ -24,7 +23,7 @@ class CsvIngestor(IngestInterface):
             if row["body"][0] != '"':
                 row["body"] = f'"{row["body"]}"'
             new_quote = QuoteModel(row["body"], row["author"])
-                
+
             quotes.append(new_quote)
 
         return quotes

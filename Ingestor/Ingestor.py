@@ -10,9 +10,10 @@ from .Docxingestor import DocxIngestor
 
 class Ingestor(IngestInterface):
     """Realiziation of the IngestorInterface encapsulating helper classes for
-    txt, csv, pdf and docx"""    
+    txt, csv, pdf and docx"""
+
     ingestors = [TxtIngestor, CsvIngestor, PdfIngestor, DocxIngestor]
-    #ingestors = [TxtIngestor, CsvIngestor, DocxIngestor]
+    # ingestors = [TxtIngestor, CsvIngestor, DocxIngestor]
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:

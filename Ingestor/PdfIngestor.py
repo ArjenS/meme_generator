@@ -7,7 +7,6 @@ from QuoteModel import QuoteModel
 from Ingestor import IngestInterface
 
 
-
 class PdfIngestor(IngestInterface):
     """Helper class implementation of the IngestInterface to parse pdf's"""
 
@@ -20,7 +19,7 @@ class PdfIngestor(IngestInterface):
 
         tmp = f"./{random.randint(0, 1000000)}.txt"
         try:
-            call = subprocess.check_call(["pdftotext",  path, tmp])
+            call = subprocess.check_call(["pdftotext", path, tmp])
         except subprocess.CalledProcessError as e:
             print(e.output)
 

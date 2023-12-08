@@ -3,7 +3,6 @@ from typing import List
 from QuoteModel import QuoteModel
 
 
-
 class IngestInterface(ABC):
     """Define an abstract class for ingesting QuoteModels"""
 
